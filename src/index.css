@@ -181,3 +181,10 @@ input:focus {
     height: 80vh;
   }
 }
+
+@media (max-width:450px){
+  .div-centre{
+    width:90%;
+    height: 67vh;
+  }
+}
