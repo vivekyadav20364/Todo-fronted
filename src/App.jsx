@@ -47,6 +47,9 @@ const App = () => {
       Date: date,
     });
     setItems([...Items, response.data]);
+    setinputlist("");
+    setTask("");
+    setdate("");
   };
 
   return (
