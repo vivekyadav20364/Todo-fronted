@@ -1,4 +1,4 @@
-import {React,useEffect,useState} from "react";
+import {React,useState} from "react";
 import Axios from 'axios';
 const Update = (props) => {
     // console.log("PPPPPP: ", props)
@@ -7,23 +7,31 @@ const Update = (props) => {
     const [updateDate, setUpdateDate] = useState("");
 
 
-
-
     const handleupdate = async (id) => {
-     if(updateName.length==0 || updateDesp.length==0){
+     if(updateName.length===0 || updateDesp.length===0){
         alert("Please fill the required field!!");
         
      }
      else { 
-     let response=await  Axios.put("https://todo-backend-q9z8.onrender.com/UpdatedName", {
+      console.log(id);
+     let response= await Axios.put("https://todo-backend-q9z8.onrender.com/UpdatedName", {
         UpdatedName: updateName,
         id: id,
         UpdatedDesp: updateDesp,
         UpdatedDate: updateDate,
       });
+      if(response){
+        // console.log("Sucess");
+        props.setitem(
+          props.item.map((val) => {
+            return (val._id === id
+              ? { _id: id, title:updateName, Desp:updateDesp ,Date:updateDate}
+              : val
+            )
+          })
+        );
+      } 
     // props.setitem([...props.item]);
-     // console.log("RESPONSE" , response.data._id);
-
     } 
     };
   //  console.log(itemId);
