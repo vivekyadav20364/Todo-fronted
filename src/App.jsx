@@ -24,7 +24,7 @@ const App = () => {
 
   useEffect(() => {
     getdata();
-  }, []);
+  },[]);
 
   const itemEvent = (event) => {
     setinputlist(event.target.value);
@@ -61,18 +61,18 @@ const App = () => {
             <div className="input-cont">
               <div className="handleinput">
                 <input
-                  type="text"
+                  type="text" 
                   onChange={itemEvent}
                   placeholder="Task's Name" value={inputlist}
                   required
                 />
                 <input
-                  type="text"
+                  type="text" 
                   onChange={(e) => setTask(e.target.value)}
                   placeholder="Description✍️" value={task}
                   required 
                 />
-                <input type="date" onChange={(e) => setdate(e.target.value)} />
+                <input type="date" value={date} onChange={(e) => setdate(e.target.value)} />
               </div>
               <div className="btn-div">
                 <button className="btn" type="submit">
@@ -82,7 +82,7 @@ const App = () => {
             </div>
           </form>
 
-          <p className="task">Tasks</p>
+         {Items.length!==0 && <p className="task">List of Tasks</p>}
 
           {Items.map((Itemsval, index) => {
             return (
